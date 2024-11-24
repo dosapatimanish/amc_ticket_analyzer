@@ -153,7 +153,8 @@ export default function Hero() {
             if (data.access_token && data.active === true) {
                 console.log("Success");
                 if (isClient) {
-                    router.push("/chat"); // This will now only run on the client
+                    router.push(`/chat?accesstoken=${data.access_token}`);
+                    
                   }
 
                 

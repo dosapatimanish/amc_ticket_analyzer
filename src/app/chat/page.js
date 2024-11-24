@@ -1,6 +1,8 @@
 "use client"; // Ensure this is included for Next.js client components
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap"; // Import GSAP
+import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import styles from "./page.module.css"; // Ensure you import your CSS module
 
 export default function SimpleAnimation() {
@@ -12,6 +14,10 @@ export default function SimpleAnimation() {
   const hamburgerRef = useRef(null); // Ref for the hamburger icon
   const [searchQuery, setSearchQuery] = useState(""); // State for search input
   const inputRef = useRef(null);
+  const searchParams = useSearchParams();
+
+  // Extract the 'accesstoken' from the query string
+  const accessToken = searchParams.get('accesstoken');
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -69,8 +75,11 @@ export default function SimpleAnimation() {
 
   const handleAnalyze = () => {
     setIsAnalyzing(true); // Disable input and button
-    alert("Analyzing...");
+    console.log("GJ "+accessToken);
+      
   };
+
+  
 
   const handleClear = () => {
     setSearchQuery(""); // Clear input field
