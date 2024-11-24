@@ -1,0 +1,255 @@
+/* In your CSS file (e.g., src/app/landing/page.module.css) */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Homemade+Apple&family=Montserrat:wght@100;400;700;900&family=Space+Mono:wght@400;700&display=swap');
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #1D4D2A;
+  position: relative;
+}
+
+.outline {
+  width: 500px;
+  height: 10px;
+  border: 2px solid #000;
+  background-color: #FFDAB9;
+  position: relative;
+  overflow: visible;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .outline {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+.filler {
+  height: 100%;
+  width: 0;
+  background-color: #A47D32;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pointer {
+  position: absolute;
+  top: -10px;
+  transform: translateX(-50%);
+  font-size: 24px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Set a height for the hero section */
+  background-color: #F8F8F8;
+  color: #000;
+  z-index: 1;
+  overflow: auto; /* Make the hero section scrollable */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.hero::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+  
+
+
+/* src/app/landing/page.module.css */
+/* src/app/landing/page.module.css */
+.heroText {
+  font-size: 3rem;
+  text-align: left; /* Align text to the left */
+  font-family: 'Archivo Black', sans-serif; /* Use Archivo Black */
+  margin: 20px; /* Add margin to the text */
+  padding: 10px; /* Add padding to the text */
+  color: #A47D32;
+  letter-spacing: -0.05em; 
+}
+
+
+/* src/app/landing/page.module.css */
+.menu {
+  position: absolute; /* Positioning the menu */
+  top: 30px; /* Adjust as needed */
+  right: 40px; /* Adjust as needed */
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+.button {
+  
+  color: #000; /* Button text color */
+  border: 2px solid #62D84E;
+  padding: 10px 15px; /* Button padding */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  font-family: 'Apercu Pro Medium';
+  font-size: medium;
+}
+
+.button:hover {
+  background-color: #62D84E; /* Darker shade on hover */
+}
+
+/* Add this new class for the centered title */
+.centeredText {
+  font-size: 6rem; /* Adjust size as needed */
+  text-align: center; /* Center the text */
+  font-family: 'Apercu Pro Bold', sans-serif; /* Use Archivo Black */
+  color: #1D4D2A; /* Match the color */
+  position: absolute; /* Positioning */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for centering */
+}
+
+/* Login Popup Styles */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'Apercu Pro Regular';
+}
+
+.popup {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+
+.popup h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.inputContainer {
+  margin-bottom: 15px;
+}
+
+.inputContainer input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.closeButton, .submitButton {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.closeButton {
+  background-color: #A47D32;
+  color: white;
+}
+
+.submitButton {
+  background-color: #62D84E;
+  color: white;
+}
+
+.closeButton:hover {
+  background-color: #503504;
+}
+
+.submitButton:hover {
+  background-color: #055709;
+}
+
+.newsScroll {
+  width: 100%;
+  background-color: #EDEDED;
+  color: #EDEDED;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.newsContent {
+  white-space: nowrap;
+  display: inline-block;
+   padding-left: 100%; 
+  color: #000;
+  font-family: 'Apercu Pro Regular';
+}
+
+
+
+.hero {
+  margin-top: 50px; /* To push the hero section below the news scroll */
+  /* Other hero styles */
+}
+
+
+
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.clearButton {
+    position: absolute;
+    right: 35px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: gray;
+}
+
+.showPasswordButton {
+    position: absolute;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: gray;
+}
+
+.clearAllButton {
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}

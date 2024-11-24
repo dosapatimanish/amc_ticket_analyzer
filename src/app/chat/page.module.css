@@ -1,0 +1,205 @@
+
+
+.container {
+  position: relative;
+}
+
+.hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 10;
+  padding: 10px; /* Add padding to ensure the hamburger is not too close to the edges */
+  display: inline-block; /* Ensure the hamburger size is based on content */
+  
+}
+
+.bar {
+  width: 35px;
+  height: 5px;
+  margin: 6px 0;
+  background-color: rgba(255, 254, 254, 0.982);
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 200px; /* Reduced width of the menu when it is open */
+  height: auto; /* Allow the height to adjust based on content */
+  background-color: #fffefe61;
+  transform: translateX(100%); /* Initially hide the menu */
+  transition: transform 0.5s ease;
+  z-index: 5;
+  display: flex;
+  justify-content: center; /* Center the dropdowns horizontally */
+  align-items: flex-start; 
+  padding-top: 60px; /* Space from the top to start dropdowns */
+  flex-direction: column; /* Stack the dropdowns vertically */
+  border-radius: 5px;
+}
+
+.menu.open {
+  transform: translateX(0); /* When the menu is opened, slide it in */
+}
+
+.dropdown {
+  width: 100%; /* Ensure dropdown occupies full width of the menu */
+  max-height: 150px; /* Set a small max-height for the dropdown */
+  overflow-y: auto; /* Ensure dropdown scrolls if content exceeds the max height */
+  opacity: 0; /* Initially hidden */
+  transform: translateY(-20px); /* Initially off-screen */
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center; /* Center the content inside dropdown */
+  align-items: center;
+  margin-bottom: 10px; /* Space between dropdowns */
+  margin-top: 10px;
+}
+
+.select {
+  width: 80%; /* Set width of select elements */
+  padding: 5px 10px; /* Smaller padding for compact look */
+  margin: 10px auto; /* Center the selects horizontally */
+  background-color: #F2DDCC;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px; /* Smaller font size for a more compact dropdown */
+  height: 30px; /* Reduced height for the select element */
+}
+
+.select:focus {
+  outline: none;
+  border: 2px solid #666;
+}
+
+.main {
+  background: linear-gradient(135deg, #102520, #1b3628, #2f5742, #466c50, #6b8a75);
+
+
+ font-family: 'apercu Pro';
+
+  width: 100vw;
+  height: 100vh;
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
+
+.centeredTitle {
+  text-align: center; /* Center text within the div */
+}
+
+.centeredTitle h1 {
+  font-size: 2.5rem; /* Adjust font size for the title */
+  color: #F2DDCC; /* Add a contrasting color for readability */
+  margin-bottom: 20px; /* Space between title and search bar */
+}
+
+.searchContainer {
+  display: flex; /* Enable flexbox for search bar and button */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  margin-top: 10px; /* Space between title and search bar */
+}
+
+
+.searchButton {
+  padding: 10px 20px; /* Adjust padding for better click area */
+  background-color: #4CAF50; /* Add a background color */
+  color: white; /* Button text color */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+  font-size: 16px; /* Adjust font size */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.searchButton:hover {
+  background-color: #45a049; /* Slightly darker green on hover */
+}
+
+
+.searchContainer {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
+
+.searchButton {
+  padding: 10px 20px;
+  background-color: #F2DDCC;
+  color: #102524;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin-top:20px;
+}
+
+.searchButton:hover {
+  background-color: #f06e04;
+}
+
+.searchInput {
+  width: 600px; /* Fixed width */
+  min-height: 40px; /* Minimum height */
+  max-height: 150px; /* Maximum height */
+  padding: 10px 20px;
+  background-color: #102524;
+  border: 1px solid #FFF;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1.5; /* Ensure consistent text line spacing */
+  overflow: hidden; /* Prevent scrollbars from appearing */
+  resize: none; /* Prevent manual resizing */
+  transition: height 0.2s ease; /* Smooth resizing */
+  color: #F2DDCC;
+}
+
+
+.clearButton {
+  padding: 10px 20px; /* Adjust padding for better click area */
+  background-color: #f44336; /* Red background color */
+  color: #F2DDCC; /* Text color */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Change cursor on hover */
+  font-size: 16px; /* Adjust font size */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+  
+}
+
+.clearButton:hover {
+  background-color: #e53935; /* Darker red on hover */
+}
+
+.clearButton:disabled {
+  background-color: #cccccc; /* Gray background when disabled */
+  cursor: not-allowed; /* Change cursor to indicate disabled state */
+}
+
+.buttons{
+  display: flex;
+  gap: 15px;
+}
+
+.searchButton, .clearButton {
+  width: 100px; /* Set a fixed width for both buttons */
+  padding: 10px 20px; /* Ensure equal padding for both */
+  font-size: 16px; /* Same font size */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+  height: 50px;
+  margin-top:20px
+}

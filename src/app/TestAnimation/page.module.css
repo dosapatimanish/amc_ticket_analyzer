@@ -1,0 +1,17 @@
+/* src/app/landing/page.module.css */
+.container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full height of the viewport */
+  background-color: #f0f0f0; /* Light background color for visibility */
+}
+
+.box {
+  padding: 20px;
+  background-color: #76c7c0; /* Color of the box */
+  border-radius: 8px; /* Rounded corners */
+  font-size: 24px; /* Font size */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional shadow for depth */
+  position: relative; /* Position relative for animation */
+}
