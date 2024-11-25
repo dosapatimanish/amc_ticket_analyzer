@@ -7,12 +7,6 @@ import styles from "./page.module.css"; // Ensure you import your CSS module
 import { TextPlugin } from "gsap/TextPlugin";
 import { Suspense } from 'react';
 
-import dynamic from 'next/dynamic';
-
-
-const ChatComponent = dynamic(() => import('./ChatComponent'), {
-  ssr: false, // Ensure this part only renders on the client-side
-});
 
 
 export default function chat() {

@@ -6,6 +6,13 @@ import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(TextPlugin);
 
+import dynamic from 'next/dynamic';
+
+const chat = dynamic(() => import('../chat/page'), {
+  ssr: false,
+});
+
+
 export default function Hero() {
     const heroRef = useRef(null);
     const titleRef = useRef(null); 
