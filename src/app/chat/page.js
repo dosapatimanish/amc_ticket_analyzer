@@ -31,6 +31,7 @@ export default function ChatComponent() {
 
   // Handle analyze click
   const handleAnalyze = async (e) => {
+    alert("Please wait 30 Seconds as we fetch the details from Purple Fabric");
     e.preventDefault();
     setIsAnalyzing(true);
 
@@ -53,7 +54,7 @@ export default function ChatComponent() {
           if (data1.response.output != null) {
             setFinalResponse(data1.response.output[0].output_parameters.Answer);
           }
-        }, 30000);
+        }, 40000);
       }
     } catch (error) {
       console.error("Error during API call:", error);
