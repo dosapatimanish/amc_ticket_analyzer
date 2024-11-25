@@ -4,8 +4,10 @@ import { gsap } from "gsap"; // Import GSAP
 import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 import styles from "./page.module.css"; // Ensure you import your CSS module
+import { TextPlugin } from "gsap/TextPlugin";
 
 export default function SimpleAnimation() {
+  gsap.registerPlugin(TextPlugin);
   const [isOpen, setIsOpen] = useState(false); // State to track menu status
   const [isAnalyzing, setIsAnalyzing] = useState(false); // State to track if analyzing
   const menuRef = useRef(null); // Ref for the menu
@@ -15,6 +17,29 @@ export default function SimpleAnimation() {
   const [searchQuery, setSearchQuery] = useState(""); // State for search input
   const inputRef = useRef(null);
   const searchParams = useSearchParams();
+  const [FinalResponse, setFinalResponse] = useState("");
+  const resultRef = useRef(null); // Ref to target the result container
+
+  useEffect(() => {
+    if (FinalResponse && resultRef.current) {
+      // Format FinalResponse to insert a new line before numbers
+      const formattedResponse = FinalResponse.replace(/(\d+)/g, '\n$1').replace(/\n/g, '<br>');
+      const tl = gsap.timeline({ defaults: { ease: "power3.inOut", duration: 0.5 } }); // Slower animation
+      
+      // Animate opacity and width
+      tl.fromTo(
+        resultRef.current,
+        { opacity: 0, width: "0%" },
+        { opacity: 1, width: "100%", duration: 3 }
+      );
+  
+      // Update resultRef content with formatted text
+      resultRef.current.innerHTML = formattedResponse;
+    }
+  }, [FinalResponse]);
+  
+  
+  
 
   // Extract the 'accesstoken' from the query string
   const accessToken = searchParams.get('accesstoken');
@@ -73,10 +98,64 @@ export default function SimpleAnimation() {
     setSearchQuery(e.target.value); // Update state with the input value
   };
 
-  const handleAnalyze = () => {
-    setIsAnalyzing(true); // Disable input and button
+  const handleAnalyze = async (e) => {
+    alert("Please wait for 25 seconds as pass API to purple Fabric Queue and wait for response")
     console.log("GJ "+accessToken);
+    setIsAnalyzing(true); // Disable input and button
+    e.preventDefault(); // Prevent form submission
+   
+    try {
+        const response = await fetch("/api/proxy2", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            Summary: searchQuery,
+            accessToken:accessToken
+          }),
+      });
       
+      const data = await response.json();
+      
+
+      // Store response in a variable
+      console.log("API Response:", data);
+
+      if (data.trace_id) {
+        // Introduce delay of 5 seconds before calling the second API
+        setTimeout(async () => {
+          try {
+            const response2 = await fetch("/api/proxy3", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                trace_id: data.trace_id,
+                accessToken: accessToken,
+              }),
+            });
+            const data1 = await response2.json();
+            console.log("API Response 2:", data1);
+            if(data1.response.output!=null);
+           { console.log(data1.response.output[0].output_parameters.Answer);
+            setFinalResponse(data1.response.output[0].output_parameters.Answer);
+            
+           }
+            // Store response in a variable
+            console.log("API Response 2:", data1);
+          } catch (error) {
+            console.error("Error during second API call:", error);
+          }
+        }, 30000); // Delay of 5 seconds
+        
+      }
+    } catch (error) {
+      console.error("Error during API call:", error);
+      setIsAnalyzing(false); // Disable input and button
+      setErrorMessage("Something went wrong. Please try again.");
+    }
   };
 
   
@@ -84,6 +163,10 @@ export default function SimpleAnimation() {
   const handleClear = () => {
     setSearchQuery(""); // Clear input field
     setIsAnalyzing(false); // Enable input and button
+    setFinalResponse("");
+    if (resultRef.current) {
+      resultRef.current.innerHTML = ""; 
+    }
   };
 
   return (
@@ -113,6 +196,10 @@ export default function SimpleAnimation() {
           </button>
           </div>
         </div>
+        <div className={styles.resultContainer}>
+  <div className={styles.resultText} ref={resultRef}></div>
+</div>
+
       </div>
 
       {/* Hamburger Button */}
