@@ -7,7 +7,11 @@ import styles from "./page.module.css"; // Ensure you import your CSS module
 import { TextPlugin } from "gsap/TextPlugin";
 import { Suspense } from 'react';
 
-export default function SimpleAnimation() {
+import dynamic from 'next/dynamic';
+
+
+
+export default function chat() {
   gsap.registerPlugin(TextPlugin);
   const [isOpen, setIsOpen] = useState(false); // State to track menu status
   const [isAnalyzing, setIsAnalyzing] = useState(false); // State to track if analyzing
