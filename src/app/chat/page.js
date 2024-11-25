@@ -9,7 +9,6 @@ import { Suspense } from 'react';
 
 import dynamic from 'next/dynamic';
 
-import dynamic from 'next/dynamic';
 
 const ChatComponent = dynamic(() => import('./ChatComponent'), {
   ssr: false, // Ensure this part only renders on the client-side
