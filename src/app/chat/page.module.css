@@ -223,13 +223,6 @@
   overflow-wrap: break-word;
 }
 
-/* body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto; 
-} */
 
 .main {
   background: linear-gradient(135deg, #102520, #1b3628, #2f5742, #466c50, #6b8a75);
