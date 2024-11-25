@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 import styles from "./page.module.css"; // Ensure you import your CSS module
 import { TextPlugin } from "gsap/TextPlugin";
+import { Suspense } from 'react';
 
 export default function SimpleAnimation() {
   gsap.registerPlugin(TextPlugin);
@@ -170,6 +171,7 @@ export default function SimpleAnimation() {
   };
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div className={styles.main}>
       <div className={styles.centeredTitle}>
         <h1>AI Powered Predictive Solution Provider</h1>
@@ -249,5 +251,6 @@ export default function SimpleAnimation() {
         </div>
       </div>
     </div>
+    </Suspense>
   );
 }
